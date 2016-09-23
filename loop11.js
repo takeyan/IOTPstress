@@ -2,9 +2,10 @@ var Client = require("ibmiotf");
 
 // 負荷条件
 var interval = 2 ; 				// 各デバイスの送信間隔[msec]
-var repeat = 10000 ; 				// 各デバイスの送信回数[回]
+var repeat = 100 ; 				// 各デバイスの送信回数[回]
 var size = 100; 				//送信データサイズ（バイト）
-var deviceInfo = require("./demo01_demo03.json"); 	// デバイス定義
+var org = "bf8dsi";				//IOTP組織ID
+var deviceInfo = require("./dev101_110.json"); 	// デバイス定義
 // var deviceInfo = require("./dev301_310.json"); 	// デバイス定義
 // var deviceInfo = require("./demo01_02_03.json"); 	// デバイス定義
 // var deviceInfo = [{"typeId":"demo01","deviceId":"dev101","success":true,"authToken":"scy0YozmMoyf0Lf8?5"}]
@@ -85,7 +86,7 @@ function setDeviceClient(devInfo){
 
 	for (var i=0 ; i<devInfo.length ; i++ ){
 		device[i] = {
-	    		"org" : "m7llwg",
+	    		"org" : org,
 	    		"id" : devInfo[i].deviceId,
 		    		"domain": "internetofthings.ibmcloud.com",
 	    		"type" : devInfo[i].typeId,
